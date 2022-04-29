@@ -1,10 +1,44 @@
 import React from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import auth from "../../firebase.init";
+import Loading from "../Loading/Loading";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
   const navigate = useNavigate();
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (user) {
+      navigate('/')
+  }
+
+  const misMatch = <p className="text-red-600">Confirm password not matched</p>;
+  const passwordLength = (
+    <p className="text-red-600">Password length should be 6 or more</p>
+  );
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const confirmPassword = event.target.confirmPassword.value;
+
+    if (password !== confirmPassword) {
+      return toast(misMatch);
+    }
+    if (password?.length < 6) {
+      return toast(passwordLength);
+    }
+    createUserWithEmailAndPassword(email, password);
+  };
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
       <div className="max-w-screen-xl m-0 sm:m-20 bg-white shadow sm:rounded-lg flex justify-center flex-1">
@@ -31,23 +65,26 @@ const Register = () => {
               </div>
 
               <div className="mx-auto max-w-xs">
-                <form>
-                  <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                    type="text"
-                    placeholder="Name"
-                    required
-                  />
+                <form onSubmit={handleRegister}>
                   <input
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                     type="email"
                     placeholder="Email"
+                    name="email"
                     required
                   />
                   <input
                     className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                     type="password"
                     placeholder="Password"
+                    name="password"
+                    required
+                  />
+                  <input
+                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                    type="password"
+                    placeholder="Confirm password"
+                    name="confirmPassword"
                     required
                   />
                   <p className="text-gray-500">
@@ -68,6 +105,9 @@ const Register = () => {
                     <AiOutlineUserAdd className="text-2xl" />
                     <span className="ml-3">Register</span>
                   </button>
+                  <p className="text-red-600">
+                    <small>{error?.message}</small>
+                  </p>
                 </form>
                 <p className="mt-6 text-xs text-gray-600 text-center">
                   I agree to abide by digital electronic's
