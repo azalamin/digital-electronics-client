@@ -13,7 +13,10 @@ const Header = () => {
         <div className="flex md:block md:pt-4 items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <h3 className="text-white border-l-2 pl-1 text-lg font-bold cursor-pointer" onClick={() => navigate('/')}>
+              <h3
+                className="text-white border-l-2 pl-1 text-lg font-bold cursor-pointer"
+                onClick={() => navigate("/")}
+              >
                 DIGITAL ELECTRONICS
               </h3>
             </div>
@@ -21,14 +24,14 @@ const Header = () => {
               <div className="ml-10 flex items-baseline space-x-4">
                 <CustomLink
                   to="/"
-                  className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
                 >
                   Home
                 </CustomLink>
 
                 <CustomLink
                   to="/manage"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
                 >
                   Manage Inventories
                 </CustomLink>
@@ -46,7 +49,10 @@ const Header = () => {
                 >
                   Calendar
                 </CustomLink>
-                <button onClick={() => navigate('/login')} className="bg-orange-700 px-4 py-1 text-white rounded-sm hover:bg-orange-600">
+                <button
+                  onClick={() => navigate("/login")}
+                  className="bg-indigo-500 hover:bg-indigo-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                >
                   Login
                 </button>
               </div>

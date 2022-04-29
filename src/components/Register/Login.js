@@ -108,14 +108,12 @@ const Login = () => {
           </div>
         </div>
         <div className="flex-1 bg-indigo-100 text-center hidden lg:flex">
-          <div
-            className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
-          ></div>
+          <div className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat bg-[url('https://storage.googleapis.com/devitary-image-host.appspot.com/15848031292911696601-undraw_designer_life_w96d.svg')]"></div>
         </div>
       </div>
       <div
         className="REMOVE-THIS-ELEMENT-IF-YOU-ARE-USING-THIS-PAGE hidden treact-popup fixed inset-0 flex items-center justify-center"
-        style={{ backgroundColor: "rgba(0,0,0,0.3)"}}
+        style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
       >
         <div className="max-w-lg p-8 sm:pb-4 bg-white rounded shadow-lg text-center sm:text-left">
           <h3 className="text-xl sm:text-2xl font-semibold mb-6 flex flex-col sm:flex-row items-center">
