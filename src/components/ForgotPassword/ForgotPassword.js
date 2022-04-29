@@ -13,12 +13,12 @@ const ForgotPassword = () => {
     event.preventDefault();
     const email = event.target.email.value;
     sendPasswordResetEmail(auth, email)
-    .then(() => {
+      .then(() => {
         toast("Password reset email sent!");
-    })
-    .catch((error) => {
-        toast(error?.message)
-    })
+      })
+      .catch((error) => {
+        toast(error?.message);
+      });
   };
 
   return (

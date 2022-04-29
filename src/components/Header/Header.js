@@ -17,7 +17,7 @@ const Header = () => {
       navigate('/login')
   }
   return (
-    <nav className="bg-gray-800 md:py-1">
+    <nav className="bg-indigo-700 md:py-1">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex md:block md:pt-4 items-center justify-between h-16">
           <div className="flex items-center">
@@ -68,7 +68,7 @@ const Header = () => {
                 ) : (
                   <button
                     onClick={() => navigate("/login")}
-                    className="bg-indigo-500 hover:bg-indigo-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                    className="bg-orange-600 hover:bg-orange-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
                   >
                     Login
                   </button>
@@ -177,7 +177,7 @@ const Header = () => {
               ) : (
                 <button
                   onClick={() => navigate("/login")}
-                  className="bg-indigo-500 hover:bg-indigo-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                  className="bg-indigo-500 hover:bg-orange-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
                 >
                   Login
                 </button>
