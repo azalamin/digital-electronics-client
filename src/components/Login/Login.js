@@ -87,6 +87,7 @@ const Login = () => {
                     <AiOutlineLogin className="text-2xl" />
                     <span className="ml-3">Login</span>
                   </button>
+                  <p onClick={() => navigate('/forgotPassword')} className="text-right font-bold cursor-pointer mt-1 text-red-600">Forgot Password?</p>
                   <p className="text-red-600">
                     <small>{error?.message}</small>
                   </p>

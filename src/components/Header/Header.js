@@ -167,6 +167,21 @@ const Header = () => {
               >
                 Reports
               </CustomLink>
+              {user ? (
+                <button
+                  onClick={logOut}
+                  className="bg-red-500 hover:bg-red-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                >
+                  Logout
+                </button>
+              ) : (
+                <button
+                  onClick={() => navigate("/login")}
+                  className="bg-indigo-500 hover:bg-indigo-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                >
+                  Login
+                </button>
+              )}
             </div>
           </div>
         )}

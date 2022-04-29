@@ -1,7 +1,7 @@
 import React from "react";
 import {
-    useAuthState,
-    useSendEmailVerification
+  useAuthState,
+  useSendEmailVerification
 } from "react-firebase-hooks/auth";
 import { Navigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";

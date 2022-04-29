@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
@@ -25,6 +26,7 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
       </Routes>
       <ToastContainer />
     </div>
