@@ -10,7 +10,10 @@ const Login = () => {
       <div className="max-w-screen-xl m-0 sm:m-20 bg-white shadow sm:rounded-lg flex justify-center flex-1">
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
           <div>
-            <h3 className="text-center font-bold text-indigo-700">
+            <h3
+              nClick={() => navigate("/")}
+              className="text-center font-bold text-indigo-700 cursor-pointer"
+            >
               DIGITAl ELECTRONICS
             </h3>
           </div>
@@ -51,7 +54,10 @@ const Login = () => {
                       </span>
                     </small>
                   </p>
-                  <button type="submit" className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                  <button
+                    type="submit"
+                    className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  >
                     <AiOutlineLogin className="text-2xl" />
                     <span className="ml-3">Login</span>
                   </button>

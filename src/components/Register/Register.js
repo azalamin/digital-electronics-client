@@ -10,7 +10,10 @@ const Register = () => {
       <div className="max-w-screen-xl m-0 sm:m-20 bg-white shadow sm:rounded-lg flex justify-center flex-1">
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
           <div>
-            <h3 className="text-center font-bold text-indigo-700">
+            <h3
+              onClick={() => navigate("/")}
+              className="text-center font-bold text-indigo-700 cursor-pointer"
+            >
               DIGITAl ELECTRONICS
             </h3>
           </div>

@@ -1,12 +1,21 @@
 import { Transition } from "@headlessui/react";
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
 import CustomLink from "../CustomLink/CustomLink";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  
+  const [user] = useAuthState(auth);
+
+  // Handle Logout user
+  const logOut = async() => {
+      await signOut(auth);
+      navigate('/login')
+  }
   return (
     <nav className="bg-gray-800 md:py-1">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,12 +58,21 @@ const Header = () => {
                 >
                   Calendar
                 </CustomLink>
-                <button
-                  onClick={() => navigate("/login")}
-                  className="bg-indigo-500 hover:bg-indigo-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
-                >
-                  Login
-                </button>
+                {user ? (
+                  <button
+                    onClick={logOut}
+                    className="bg-red-500 hover:bg-red-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => navigate("/login")}
+                    className="bg-indigo-500 hover:bg-indigo-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                  >
+                    Login
+                  </button>
+                )}
               </div>
             </div>
           </div>
