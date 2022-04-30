@@ -1,0 +1,60 @@
+______Main Part________
+1. Done
+2. Not
+3. Done
+4. Done
+5. Done
+6. Done
+7. Not
+8. Not
+9. Done
+10. Half Done
+11. Not
+12. Done
+13. Not
+14. Not
+
+______Bonus________
+1. Done
+2. Done
+3. Done
+4. Not
+5. Done
+6. Done
+7. Half Done
+8. Done
+9. Done
+10. Not
+11. Not
+
+______Optional but highly encourage________
+1. Not
+2. Not
+3. Not
+
+______Optional________
+1. Done
+2. Done
+3. Not
+4. Done
+5. Not 
+6. No need to do it
+7. Done
+8. Optional 
+9. Optional
+
+______Additional________
+1. Done
+2. Done
+3. Done
+4. Done
+5. No need
+6. Done
+7. Done
+
+
+______What to submit________
+1. Your client-side code Github repository
+2. Your server-side code Github repository
+3. Your live website link
+4. Stack overflow Question/answer or Github issue link

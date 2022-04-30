@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const InventoryDetails = () => {
   const { manageId } = useParams();
   const [inventory, setInventory] = useState({});
   const [updated, setUpdated] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:5000/inventoryDetails?manageId=${manageId}`)
@@ -50,6 +51,15 @@ const InventoryDetails = () => {
 
   return (
     <div className="container px-4 mx-auto">
+      <div className="text-center py-5">
+        <button
+          onClick={() => navigate("/manage")}
+          style={{ letterSpacing: "5px", transition: "0.2s" }}
+          className="border-2 border-gray-800 text-gray-800 rounded-3xl font-bold py-4 px-5 mt-5 hover:bg-red-700 hover:border-red-700 hover:text-white"
+        >
+          MANAGE INVENTORIES
+        </button>
+      </div>
       <div className="md:flex justify-evenly md:mt-10 py-10">
         <div className="md:mr-10 my-10 md:my-0">
           <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-auto text-center">
