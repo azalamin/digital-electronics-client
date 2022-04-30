@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 const MangeInventories = () => {
   const navigate = useNavigate();
   const [inventories, setInventories] = useState([]);
-  
+
   useEffect(() => {
     fetch(`http://localhost:5000/inventory`)
       .then((res) => res.json())
       .then((data) => setInventories(data));
   }, []);
-  
+
   return (
     <section className="container px-4 mx-auto mt-10 py-10">
       <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-20">
@@ -49,15 +49,6 @@ const MangeInventories = () => {
             </div>
           </div>
         ))}
-      </div>
-      <div className="text-center py-10">
-        <button
-          onClick={() => navigate("/manage")}
-          style={{ letterSpacing: "5px", transition: "0.2s" }}
-          className="border-2 border-gray-800 text-gray-800 rounded-3xl font-bold py-4 px-5 mt-5 hover:bg-red-700 hover:border-red-700 hover:text-white"
-        >
-          MANAGE INVENTORIES
-        </button>
       </div>
     </section>
   );

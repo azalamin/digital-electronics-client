@@ -6,7 +6,7 @@ const Home = () => {
   const [inventories, setInventories] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/inventory?size=${6}`)
+    fetch(`http://localhost:5000/inventory?homeInventory=${6}`)
       .then((res) => res.json())
       .then((data) => setInventories(data));
   }, []);
