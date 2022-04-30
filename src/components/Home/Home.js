@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+    Bar, BarChart, CartesianGrid, Legend,
+    ResponsiveContainer, Tooltip, XAxis,
+    YAxis
+} from "recharts";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -94,6 +99,30 @@ const Home = () => {
             MANAGE INVENTORIES
           </button>
         </div>
+      </section>
+      <section className="py-20 container px-4 mx-auto">
+        <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-20">
+          OUR STOCK
+        </h1>
+        <ResponsiveContainer className='w-100' height={450}>
+          <BarChart
+            data={inventories}
+            margin={{
+              top: 20,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="price" stackId="a" fill="#8884d8" />
+            <Bar dataKey="quantity" stackId="a" fill="#82ca9d" />
+          </BarChart>
+        </ResponsiveContainer>
       </section>
     </>
   );
