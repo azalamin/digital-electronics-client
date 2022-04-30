@@ -1,11 +1,11 @@
 import React from "react";
 import {
-    useSignInWithGithub,
-    useSignInWithGoogle
+  useSignInWithGithub,
+  useSignInWithGoogle
 } from "react-firebase-hooks/auth";
 import { BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Loading/Loading";
 
@@ -14,13 +14,15 @@ const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signInWithGithub, githubUser, githubLoading, githubError] =
     useSignInWithGithub(auth);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   if (loading || githubLoading) {
     return <Loading />;
   }
 
   if (user || githubUser) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
   return (
     <div className="flex flex-col items-center">
@@ -44,7 +46,9 @@ const SocialLogin = () => {
         <span className="ml-4">Sign Up with GitHub</span>
       </button>
       <p>
-        <small className="text-red-600">{error?.message || githubError?.message}</small>
+        <small className="text-red-600">
+          {error?.message || githubError?.message}
+        </small>
       </p>
     </div>
   );
