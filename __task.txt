@@ -1,12 +1,12 @@
 ______Main Part________
 1. Done
-2. Not
+2. Done
 3. Done
 4. Done
 5. Done
 6. Done
-7. Not
-8. Not
+7. Done
+8. Working.......
 9. Done
 10. Half Done
 11. Not

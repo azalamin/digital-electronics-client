@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "./App.css";
+import AddInventory from "./components/AddInventory/AddInventory";
 import Footer from "./components/Footer/Footer";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import Header from "./components/Header/Header";
@@ -34,6 +35,14 @@ function App() {
             </PrivetRoute>
           }
         ></Route>
+        <Route
+          path="/addInventory"
+          element={
+            <PrivetRoute>
+              <AddInventory />
+            </PrivetRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />

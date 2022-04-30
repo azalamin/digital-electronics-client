@@ -1,54 +1,105 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { AiOutlinePlus } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const MangeInventories = () => {
   const navigate = useNavigate();
   const [inventories, setInventories] = useState([]);
+  const [updated, setUpdated] = useState({});
 
   useEffect(() => {
     fetch(`https://gentle-forest-27410.herokuapp.com/inventory`)
       .then((res) => res.json())
       .then((data) => setInventories(data));
-  }, []);
+  }, [updated]);
+
+  const handleDelete = (id) => {
+    const confirmation = window.confirm();
+    if (confirmation) {
+      axios
+        .delete(
+          `https://gentle-forest-27410.herokuapp.com/inventory?inventoryId=${id}`
+        )
+        .then((res) => {
+          toast("Item deleted");
+          setUpdated(res);
+        })
+        .catch((error) => {
+          toast(error?.message);
+        });
+    }
+  };
 
   return (
     <section className="container px-4 mx-auto mt-10 py-10">
-      <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-20">
-        Welcome To Inventories
-      </h1>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 xl:gap-5">
-        {inventories.map((inventory) => (
-          <div key={inventory._id} className="mx-auto">
-            <div>
-              <div className="max-w-sm rounded-lg border bg-gray-800">
-                <img className="rounded-t-lg" src={inventory?.img} alt="" />
-                <div className="p-5">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {inventory.name}
-                  </h5>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    <strong>Price:</strong> ${inventory?.price}
-                  </p>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    <strong>Quantity:</strong> {inventory?.quantity} in stock
-                  </p>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    <strong>Supplier Name:</strong> {inventory?.supplierName}
-                  </p>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    <strong>Description:</strong> {inventory?.description}
-                  </p>
-                  <button
-                    onClick={() => navigate(`/manage/${inventory?._id}`)}
-                    className="block border-2 rounded-lg hover:bg-indigo-800 hover:border-indigo-800 px-4 transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none w-full py-2 text-xl text-white"
-                  >
-                    Manage
-                  </button>
-                </div>
-              </div>
+      <div className="text-right pr-10">
+        <button
+          onClick={() => navigate("/addInventory")}
+          className="bg-green-700 hover:bg-green-800 px-8 py-3 text-xl text-white rounded-lg"
+        >
+          <span className="flex items-center">
+            <AiOutlinePlus className="mr-3" />
+            <p>Add new item</p>
+          </span>
+        </button>
+      </div>
+      <div className="flex flex-col">
+        <div className="overflow-x-auto md:overflow-hidden">
+          <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="overflow-hidden">
+              <table className="min-w-full border text-center">
+                <thead className="border-b">
+                  <tr className="bg-indigo-700 text-lg font-bold">
+                    <th scope="col" className="text-white px-6 py-4 ">
+                      #
+                    </th>
+                    <th scope="col" className="text-white px-6 py-4">
+                      Name
+                    </th>
+                    <th scope="col" className="text-white px-6 py-4">
+                      Quantity
+                    </th>
+                    <th scope="col" className="text-white px-6 py-4">
+                      Price
+                    </th>
+                    <th scope="col" className="text-white px-6 py-4">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                {inventories.map((inventory, index) => (
+                  <tbody key={inventory?._id}>
+                    <tr className="border-b">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r">
+                        {index + 1}
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                        {inventory?.name}
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                        {inventory?.quantity}
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                        ${inventory?.price}
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r flex justify-center">
+                        <p
+                          onClick={() => handleDelete(inventory?._id)}
+                          className="cursor-pointer p-3 rounded-full hover:bg-red-700 hover:text-white text-red-700 transition-shadow"
+                        >
+                          <RiDeleteBin6Line className="text-3xl" />
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                ))}
+              </table>
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );
