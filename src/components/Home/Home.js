@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-    Bar, BarChart, CartesianGrid, Legend,
-    ResponsiveContainer, Tooltip, XAxis,
-    YAxis
-} from "recharts";
+import Faq from "../Faq/Faq";
+import InventoryChart from "../InventoryChart/InventoryChart";
+import "./Home.css";
 
 const Home = () => {
   const navigate = useNavigate();
   const [inventories, setInventories] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/inventory?homeInventory=${6}`)
+    fetch(
+      `https://gentle-forest-27410.herokuapp.com/inventory?homeInventory=${6}`
+    )
       .then((res) => res.json())
       .then((data) => setInventories(data));
   }, []);
@@ -102,27 +102,12 @@ const Home = () => {
       </section>
       <section className="py-20 container px-4 mx-auto">
         <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-20">
-          OUR STOCK
+          OUR STOCKS
         </h1>
-        <ResponsiveContainer className='w-100' height={450}>
-          <BarChart
-            data={inventories}
-            margin={{
-              top: 20,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="price" stackId="a" fill="#8884d8" />
-            <Bar dataKey="quantity" stackId="a" fill="#82ca9d" />
-          </BarChart>
-        </ResponsiveContainer>
+        <InventoryChart inventories={inventories}></InventoryChart>
+        <div>
+          <Faq></Faq>
+        </div>
       </section>
     </>
   );

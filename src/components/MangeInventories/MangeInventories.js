@@ -6,7 +6,7 @@ const MangeInventories = () => {
   const [inventories, setInventories] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/inventory`)
+    fetch(`https://gentle-forest-27410.herokuapp.com/inventory`)
       .then((res) => res.json())
       .then((data) => setInventories(data));
   }, []);
