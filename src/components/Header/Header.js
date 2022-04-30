@@ -177,7 +177,7 @@ const Header = () => {
               ) : (
                 <button
                   onClick={() => navigate("/login")}
-                  className="bg-indigo-500 hover:bg-orange-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                  className="bg-orange-600 hover:bg-orange-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
                 >
                   Login
                 </button>

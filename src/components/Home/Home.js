@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-    return (
-      <div
-        style={{ backgroundColor: "#100827", minHeight: '90vh' }}
+  const navigate = useNavigate();
+  const [inventories, setInventories] = useState([]);
+
+  useEffect(() => {
+    fetch("data.json")
+      .then((res) => res.json())
+      .then((data) => setInventories(data));
+  }, []);
+
+  return (
+    <>
+      <section
+        style={{ backgroundColor: "#100827", minHeight: "90vh" }}
         className="text-white"
       >
-        <div className="md:flex justify-between items-center container mx-auto px-4">
+        <div className="md:flex justify-between items-center container mx-auto px-4 pt-10">
           <div className="">
             <img
               className="md:mt-10 pt-5"
@@ -15,19 +26,65 @@ const Home = () => {
             />
           </div>
           <div className="order-last md:order-first mt-20 md:mt-0 pb-14 md:pb-0 text-center md:text-left">
-            <h3 className="text-4xl md:text-5xl font-bold font-mono">
-              WELCOME TO
-            </h3>
-            <h3 className="text-4xl md:text-5xl font-bold font-mono">
-              DIGITAL
-            </h3>
-            <h3 className="text-4xl md:text-5xl font-bold font-mono">
-              ELECTRONICS
-            </h3>
+            <div className="mx-0 md:mx-10">
+              <h3 className="text-4xl sm:text-6xl font-bold font-mono">
+                WELCOME TO
+              </h3>
+              <h3 className="text-4xl sm:text-6xl font-bold font-mono">
+                DIGITAL
+              </h3>
+              <h3 className="text-4xl sm:text-6xl font-bold font-mono">
+                ELECTRONICS
+              </h3>
+              <button
+                onClick={() => navigate("/manage")}
+                style={{ letterSpacing: "5px", transition: "0.2s" }}
+                className="border-2 rounded-3xl font-bold py-4 px-5 mt-5 hover:bg-red-700 hover:border-red-700"
+              >
+                INVENTORIES
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      </section>
+      <section className="container px-4 mx-auto mt-20 py-10">
+        <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-20">
+          Inventories
+        </h1>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 xl:gap-5">
+          {inventories.map((inventory) => (
+            <div key={inventory.id} className="mx-auto">
+              <div>
+                <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                  <img className="rounded-t-lg" src={inventory?.img} alt="" />
+                  <div className="p-5">
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      {inventory.name}
+                    </h5>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                      <strong>Price:</strong> ${inventory?.price}
+                    </p>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                      <strong>Quantity:</strong> {inventory?.quantity} in stock
+                    </p>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                      <strong>Supplier Name:</strong> {inventory?.supplierName}
+                    </p>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                      <strong>Description:</strong> {inventory?.description}
+                    </p>
+                    <button className="block border-2 rounded-lg hover:bg-red-700 hover:border-red-700 px-4 transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none w-full py-2 text-xl text-white">
+                      Manage
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
 };
 
 export default Home;
