@@ -61,14 +61,14 @@ const Header = () => {
                 {user ? (
                   <button
                     onClick={logOut}
-                    className="bg-red-500 hover:bg-red-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                    className="border-2 bg-red-700 hover:bg-indigo-700 hover:border-white-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
                   >
                     Logout
                   </button>
                 ) : (
                   <button
                     onClick={() => navigate("/login")}
-                    className="bg-orange-600 hover:bg-orange-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                    className="border-2 hover:bg-red-700 hover:border-red-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
                   >
                     Login
                   </button>
@@ -170,14 +170,14 @@ const Header = () => {
               {user ? (
                 <button
                   onClick={logOut}
-                  className="bg-red-500 hover:bg-red-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                  className="border-2 bg-red-700 hover:bg-indigo-700 hover:border-white-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
                 >
                   Logout
                 </button>
               ) : (
                 <button
                   onClick={() => navigate("/login")}
-                  className="bg-orange-600 hover:bg-orange-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                  className="border-2 hover:bg-red-700 hover:border-red-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
                 >
                   Login
                 </button>

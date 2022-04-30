@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const [inventories, setInventories] = useState([]);
-
+  
   useEffect(() => {
-    fetch("data.json")
+    fetch(`http://localhost:5000/inventory?size=${6}`)
       .then((res) => res.json())
       .then((data) => setInventories(data));
   }, []);
@@ -17,7 +17,7 @@ const Home = () => {
         style={{ backgroundColor: "#100827", minHeight: "90vh" }}
         className="text-white"
       >
-        <div className="md:flex justify-between items-center container mx-auto px-4 pt-10">
+        <div className="md:flex justify-between items-center container mx-auto px-4 md:pt-10">
           <div className="">
             <img
               className="md:mt-10 pt-5"
@@ -47,15 +47,15 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="container px-4 mx-auto mt-20 py-10">
+      <section className="container px-4 mx-auto mt-10 py-10">
         <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-20">
           Inventories
         </h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 xl:gap-5">
           {inventories.map((inventory) => (
-            <div key={inventory.id} className="mx-auto">
+            <div key={inventory._id} className="mx-auto">
               <div>
-                <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                <div className="max-w-sm rounded-lg border bg-gray-800">
                   <img className="rounded-t-lg" src={inventory?.img} alt="" />
                   <div className="p-5">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -73,7 +73,7 @@ const Home = () => {
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                       <strong>Description:</strong> {inventory?.description}
                     </p>
-                    <button className="block border-2 rounded-lg hover:bg-red-700 hover:border-red-700 px-4 transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none w-full py-2 text-xl text-white">
+                    <button className="block border-2 rounded-lg hover:bg-indigo-800 hover:border-indigo-800 px-4 transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none w-full py-2 text-xl text-white">
                       Manage
                     </button>
                   </div>

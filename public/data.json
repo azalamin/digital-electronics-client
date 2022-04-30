@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
     "name": "Laptop",
     "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
@@ -9,7 +8,6 @@
     "quantity": 20
   },
   {
-    "id": 2,
     "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
     "name": "Laptop",
     "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
@@ -18,7 +16,6 @@
     "quantity": 20
   },
   {
-    "id": 3,
     "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
     "name": "Laptop",
     "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
@@ -27,7 +24,6 @@
     "quantity": 20
   },
   {
-    "id": 4,
     "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
     "name": "Laptop",
     "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
@@ -36,7 +32,6 @@
     "quantity": 20
   },
   {
-    "id": 5,
     "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
     "name": "Laptop",
     "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
@@ -45,7 +40,22 @@
     "quantity": 20
   },
   {
-    "id": 6,
+    "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
+    "name": "Laptop",
+    "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
+    "supplierName": "Lenovo",
+    "price": 1400,
+    "quantity": 20
+  },
+  {
+    "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
+    "name": "Laptop",
+    "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
+    "supplierName": "Lenovo",
+    "price": 1400,
+    "quantity": 20
+  },
+  {
     "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
     "name": "Laptop",
     "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
