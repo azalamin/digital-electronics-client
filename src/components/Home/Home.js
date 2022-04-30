@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const [inventories, setInventories] = useState([]);
-  
+
   useEffect(() => {
     fetch(`http://localhost:5000/inventory?size=${6}`)
       .then((res) => res.json())
@@ -17,7 +17,7 @@ const Home = () => {
         style={{ backgroundColor: "#100827", minHeight: "90vh" }}
         className="text-white"
       >
-        <div className="md:flex justify-between items-center container mx-auto px-4 md:pt-10">
+        <div className="md:flex justify-between items-center container mx-auto px-4 md:pt-10 pb-20">
           <div className="">
             <img
               className="md:mt-10 pt-5"
@@ -73,7 +73,10 @@ const Home = () => {
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                       <strong>Description:</strong> {inventory?.description}
                     </p>
-                    <button className="block border-2 rounded-lg hover:bg-indigo-800 hover:border-indigo-800 px-4 transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none w-full py-2 text-xl text-white">
+                    <button
+                      onClick={() => navigate(`/manage/${inventory?._id}`)}
+                      className="block border-2 rounded-lg hover:bg-indigo-800 hover:border-indigo-800 px-4 transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none w-full py-2 text-xl text-white"
+                    >
                       Manage
                     </button>
                   </div>
@@ -81,6 +84,15 @@ const Home = () => {
               </div>
             </div>
           ))}
+        </div>
+        <div className="text-center py-10">
+          <button
+            onClick={() => navigate("/manage")}
+            style={{ letterSpacing: "5px", transition: "0.2s" }}
+            className="border-2 border-gray-800 text-gray-800 rounded-3xl font-bold py-4 px-5 mt-5 hover:bg-red-700 hover:border-red-700 hover:text-white"
+          >
+            MANAGE INVENTORIES
+          </button>
         </div>
       </section>
     </>
