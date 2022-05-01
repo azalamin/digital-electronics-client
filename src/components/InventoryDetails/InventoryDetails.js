@@ -15,7 +15,11 @@ const InventoryDetails = () => {
   }, [manageId, updated]);
 
   const handleDelivered = () => {
-    const quantity = inventory?.quantity - 1;
+    let quantity = inventory?.quantity;
+    if (quantity > 0) {
+      quantity = quantity - 1;
+    }
+
     fetch(`http://localhost:5000/updateQuantity?manageId=${manageId}`, {
       method: "PUT",
       headers: {
@@ -25,8 +29,12 @@ const InventoryDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast("Stock updated");
         setUpdated(data);
+        if (quantity > 0) {
+          toast("Stock updated");
+        } else {
+          toast("No Stock");
+        }
       });
   };
 
