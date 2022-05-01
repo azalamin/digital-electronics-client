@@ -1,6 +1,6 @@
 import { Transition } from "@headlessui/react";
 import { signOut } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
@@ -10,6 +10,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
+  const divRef = useRef();
 
   // Handle Logout user
   const logOut = async() => {
@@ -69,7 +70,7 @@ const Header = () => {
                 >
                   Blog
                 </CustomLink>
-                
+
                 {user ? (
                   <button
                     onClick={logOut}
@@ -144,65 +145,63 @@ const Header = () => {
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
-        {(ref) => (
-          <div className="lg:hidden" id="mobile-menu">
-            <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <CustomLink
-                to="/"
-                className=" hover:bg-red-700 text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Home
-              </CustomLink>
+        <div className="lg:hidden" id="mobile-menu">
+          <div ref={divRef} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <CustomLink
+              to="/"
+              className=" hover:bg-red-700 text-white block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Home
+            </CustomLink>
 
-              <CustomLink
-                to="/manage"
-                className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium "
-              >
-                Manage Inventories
-              </CustomLink>
+            <CustomLink
+              to="/manage"
+              className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium "
+            >
+              Manage Inventories
+            </CustomLink>
 
-              {user && (
-                <>
-                  <CustomLink
-                    to="/addInventory"
-                    className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  >
-                    Add Item
-                  </CustomLink>
-
-                  <CustomLink
-                    to="/myItem"
-                    className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  >
-                    My Items
-                  </CustomLink>
-                </>
-              )}
-
-              <CustomLink
-                to="/blog"
-                className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Blog
-              </CustomLink>
-              {user ? (
-                <button
-                  onClick={logOut}
-                  className="border-2 bg-red-700 hover:bg-indigo-700 hover:border-white-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+            {user && (
+              <>
+                <CustomLink
+                  to="/addInventory"
+                  className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
-                  Logout
-                </button>
-              ) : (
-                <button
-                  onClick={() => navigate("/login")}
-                  className="border-2 hover:bg-red-700 hover:border-red-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                  Add Item
+                </CustomLink>
+
+                <CustomLink
+                  to="/myItem"
+                  className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
-                  Login
-                </button>
-              )}
-            </div>
+                  My Items
+                </CustomLink>
+              </>
+            )}
+
+            <CustomLink
+              to="/blog"
+              className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Blog
+            </CustomLink>
+            {user ? (
+              <button
+                onClick={logOut}
+                className="border-2 bg-red-700 hover:bg-indigo-700 hover:border-white-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+              >
+                Logout
+              </button>
+            ) : (
+              <button
+                onClick={() => navigate("/login")}
+                className="border-2 hover:bg-red-700 hover:border-red-700 px-4 py-1 text-white rounded-sm transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+              >
+                Login
+              </button>
+            )}
           </div>
-        )}
+        </div>
       </Transition>
     </nav>
   );
