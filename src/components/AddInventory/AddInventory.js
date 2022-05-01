@@ -5,12 +5,13 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
+//  Handle Add Inventory
 const AddInventory = () => {
   const [user] = useAuthState(auth);
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     axios
-      .post("https://gentle-forest-27410.herokuapp.com/inventory", data)
+      .post("http://localhost:5000/inventory", data)
       .then(function (response) {
         toast("Posted inventory");
         reset();

@@ -14,17 +14,21 @@ const PrivetRoute = ({ children }) => {
   const [sendEmailVerification, sending] =
     useSendEmailVerification(auth);
 
+    // Spinner
   if (loading) {
     return <Loading />;
   }
+  // Sending
   if (sending) {
     return toast("Sending.....");
   }
 
+  // If user not login
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
   
+  // Handle Send Verification
   const handleSendVerification = async () => {
     await sendEmailVerification(user.email);
     toast("Sent verification email");

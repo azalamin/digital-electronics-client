@@ -134,6 +134,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      {/* Mobile Responsive Menu */}
       <Transition
         show={isOpen}
         enter="transition ease-out duration-100 transform"
@@ -179,17 +180,11 @@ const Header = () => {
               )}
 
               <CustomLink
-                to="calander"
+                to="/blog"
                 className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               >
-                Calendar
+                Blog
               </CustomLink>
-              {/* 
-              
-              block px-3 py-2 rounded-md text-base font-medium
-              
-              
-              */}
               {user ? (
                 <button
                   onClick={logOut}

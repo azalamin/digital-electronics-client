@@ -9,7 +9,7 @@ const MyItem = () => {
   const [updated, setUpdated] = useState({});
 
   useEffect(() => {
-    fetch(`https://gentle-forest-27410.herokuapp.com/inventories?email=${user?.email}`)
+    fetch(`http://localhost:5000/inventories?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setInventories(data));
   }, [user, updated]);
@@ -17,7 +17,7 @@ const MyItem = () => {
   const handleDelete = (id) => {
     const confirmation = window.confirm("Are you sure you want to delete?");
     if (confirmation) {
-      fetch(`https://gentle-forest-27410.herokuapp.com/myInventory?id=${id}`, {
+      fetch(`http://localhost:5000/myInventory?id=${id}`, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",

@@ -145,6 +145,7 @@ const Footer = () => {
           <div className="sm:w-full px-4 md:w-1/6">
             <strong>FWR</strong>
           </div>
+          {/* Address And Contact Area */}
           <div className="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
             <h6 className="font-bold mb-2">Address</h6>
             <address className="not-italic mb-4 text-sm">

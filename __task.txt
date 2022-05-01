@@ -11,21 +11,21 @@ ______Main Part________
 10. Done
 11. Done
 12. Done
-13. Not -1
-14. Not -2
+13. Done
+14. Done
 
 ______Bonus________
 1. Done
 2. Done
 3. Done
-4. Not
+4. Done
 5. Done
 6. Done
 7. Half Done
 8. Done
 9. Done
-10. Not -3
-11. Not -4
+10. Not -2
+11. Not -3
 
 ______Optional but highly encourage________
 1. Not

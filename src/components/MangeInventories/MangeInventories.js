@@ -11,17 +11,19 @@ const MangeInventories = () => {
   const [updated, setUpdated] = useState({});
 
   useEffect(() => {
-    fetch(`https://gentle-forest-27410.herokuapp.com/inventory`)
+    fetch(`http://localhost:5000/inventory`)
       .then((res) => res.json())
       .then((data) => setInventories(data));
   }, [updated]);
 
+  // Handle Delete Inventory
   const handleDelete = (id) => {
+    // handle delete confirmation
     const confirmation = window.confirm('Are you sure you want to delete?');
     if (confirmation) {
       axios
         .delete(
-          `https://gentle-forest-27410.herokuapp.com/inventory?inventoryId=${id}`
+          `http://localhost:5000/inventory?inventoryId=${id}`
         )
         .then((res) => {
           toast("Item deleted");
@@ -35,7 +37,8 @@ const MangeInventories = () => {
 
   return (
     <section className="container px-4 mx-auto mt-10 py-10">
-      <div className="text-right pr-10">
+      <div className="text-center md:text-right md:pr-10 ">
+        {/* Handle Add New Item */}
         <button
           onClick={() => navigate("/addInventory")}
           className="bg-green-700 hover:bg-green-800 px-8 py-3 text-xl text-white rounded-lg"
@@ -46,6 +49,7 @@ const MangeInventories = () => {
           </span>
         </button>
       </div>
+      {/* Inventory Management */}
       <div className="flex flex-col">
         <div className="overflow-x-auto md:overflow-hidden">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -86,9 +90,10 @@ const MangeInventories = () => {
                         ${inventory?.price}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r flex justify-center">
+                        {/* Handle Inventory Delete BUTTON */}
                         <p
                           onClick={() => handleDelete(inventory?._id)}
-                          className="cursor-pointer p-3 rounded-full hover:bg-red-700 hover:text-white text-red-700 transition-shadow"
+                          className="cursor-pointer p-3 rounded-full bg-red-100 hover:bg-red-700 hover:text-white text-red-700 transition-shadow"
                         >
                           <RiDeleteBin6Line className="text-3xl" />
                         </p>

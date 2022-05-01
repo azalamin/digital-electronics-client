@@ -13,14 +13,17 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
   const from = location.state?.from?.pathname || "/";
 
+  // Handle Spinner
   if (loading) {
     return <Loading />;
   }
 
+  //  Handle Logged user Redirect
   if (user) {
     navigate(from, { replace: true });
   }
 
+  // Handle Login
   const handleLogin = (event) => {
     event.preventDefault();
     const email = event.target.email.value;

@@ -12,6 +12,7 @@ import Login from "./components/Login/Login";
 import MangeInventories from "./components/MangeInventories/MangeInventories";
 import MyItem from "./components/MyItem/MyItem";
 import Register from "./components/Register/Register";
+import NotFound from "./NotFound/NotFound";
 import PrivetRoute from "./PrivetRoute/PrivetRoute";
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer />
       <Footer></Footer>
