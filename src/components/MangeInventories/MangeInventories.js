@@ -11,7 +11,7 @@ const MangeInventories = () => {
   const [updated, setUpdated] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/inventory`)
+    fetch(`https://gentle-forest-27410.herokuapp.com/inventory`)
       .then((res) => res.json())
       .then((data) => setInventories(data));
   }, [updated]);
@@ -21,7 +21,7 @@ const MangeInventories = () => {
     if (confirmation) {
       axios
         .delete(
-          `http://localhost:5000/inventory?inventoryId=${id}`
+          `https://gentle-forest-27410.herokuapp.com/inventory?inventoryId=${id}`
         )
         .then((res) => {
           toast("Item deleted");

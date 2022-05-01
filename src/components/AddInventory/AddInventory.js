@@ -10,7 +10,7 @@ const AddInventory = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:5000/inventory", data)
+      .post("https://gentle-forest-27410.herokuapp.com/inventory", data)
       .then(function (response) {
         toast("Posted inventory");
         reset();
