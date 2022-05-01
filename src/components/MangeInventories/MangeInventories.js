@@ -17,7 +17,7 @@ const MangeInventories = () => {
   }, [updated]);
 
   const handleDelete = (id) => {
-    const confirmation = window.confirm();
+    const confirmation = window.confirm('Are you sure you want to delete?');
     if (confirmation) {
       axios
         .delete(

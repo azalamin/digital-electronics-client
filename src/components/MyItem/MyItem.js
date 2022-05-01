@@ -15,17 +15,20 @@ const MyItem = () => {
   }, [user, updated]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/myInventory?id=${id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        toast("Item deleted");
-        setUpdated(data);
-      });
+    const confirmation = window.confirm("Are you sure you want to delete?");
+    if (confirmation) {
+      fetch(`http://localhost:5000/myInventory?id=${id}`, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          toast("Item deleted");
+          setUpdated(data);
+        });
+    }
   };
 
   return (
