@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <nav className="bg-indigo-700 md:py-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex md:block md:pt-4 items-center justify-between h-16">
+        <div className="flex lg:block lg:pt-4 items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <h3
@@ -29,7 +29,7 @@ const Header = () => {
                 DIGITAL ELECTRONICS
               </h3>
             </div>
-            <div className="hidden md:block md:ml-auto">
+            <div className="hidden lg:block md:ml-auto">
               <div className="ml-10 flex items-baseline space-x-4">
                 <CustomLink
                   to="/"
@@ -46,20 +46,30 @@ const Header = () => {
                 </CustomLink>
 
                 {user && (
-                  <CustomLink
-                    to="/addInventory"
-                    className="text-gray-300 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Add Item
-                  </CustomLink>
+                  <>
+                    <CustomLink
+                      to="/addInventory"
+                      className="text-gray-300 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Add Item
+                    </CustomLink>
+
+                    <CustomLink
+                      to="/myItem"
+                      className="text-gray-300 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      My Item
+                    </CustomLink>
+                  </>
                 )}
 
                 <CustomLink
-                  to="calander"
+                  to="/blog"
                   className="text-gray-300 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Calendar
+                  Blog
                 </CustomLink>
+                
                 {user ? (
                   <button
                     onClick={logOut}
@@ -78,7 +88,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="-mr-2 flex md:hidden">
+          <div className="-mr-2 flex lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
@@ -134,41 +144,52 @@ const Header = () => {
         leaveTo="opacity-0 scale-95"
       >
         {(ref) => (
-          <div className="md:hidden" id="mobile-menu">
+          <div className="lg:hidden" id="mobile-menu">
             <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <CustomLink
-                to="/home"
-                className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
+                to="/"
+                className=" hover:bg-red-700 text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Home
               </CustomLink>
 
               <CustomLink
                 to="/manage"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium "
               >
                 Manage Inventories
               </CustomLink>
 
-              <CustomLink
-                to="project"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Projects
-              </CustomLink>
+              {user && (
+                <>
+                  <CustomLink
+                    to="/addInventory"
+                    className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  >
+                    Add Item
+                  </CustomLink>
+
+                  <CustomLink
+                    to="/myItem"
+                    className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  >
+                    My Item
+                  </CustomLink>
+                </>
+              )}
 
               <CustomLink
                 to="calander"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-300 hover:bg-red-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Calendar
               </CustomLink>
-              <CustomLink
-                to="/report"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Reports
-              </CustomLink>
+              {/* 
+              
+              block px-3 py-2 rounded-md text-base font-medium
+              
+              
+              */}
               {user ? (
                 <button
                   onClick={logOut}

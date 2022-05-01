@@ -59,7 +59,7 @@ const AddInventory = () => {
           <input
             className="border py-3 mb-3 px-4"
             placeholder="Photo URL"
-            {...register("photoURL", { required: true })}
+            {...register("img", { required: true })}
           />
           <textarea
             className="border py-3 mb-3 px-4"
