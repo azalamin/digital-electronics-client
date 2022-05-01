@@ -33,28 +33,30 @@ const Header = () => {
               <div className="ml-10 flex items-baseline space-x-4">
                 <CustomLink
                   to="/"
-                  className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                  className=" hover:bg-red-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
                 >
                   Home
                 </CustomLink>
 
                 <CustomLink
                   to="/manage"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
+                  className="text-gray-300 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none"
                 >
                   Manage Inventories
                 </CustomLink>
 
-                <CustomLink
-                  to="project"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Projects
-                </CustomLink>
+                {user && (
+                  <CustomLink
+                    to="/addInventory"
+                    className="text-gray-300 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Add Item
+                  </CustomLink>
+                )}
 
                 <CustomLink
                   to="calander"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-gray-300 hover:bg-red-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Calendar
                 </CustomLink>
