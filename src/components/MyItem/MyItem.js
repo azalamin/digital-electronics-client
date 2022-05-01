@@ -1,5 +1,8 @@
+import axios from "axios";
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
@@ -7,13 +10,30 @@ const MyItem = () => {
   const [inventories, setInventories] = useState([]);
   const [user] = useAuthState(auth);
   const [updated, setUpdated] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/inventories?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setInventories(data));
+    const getInventories = async () => {
+      const url = `http://localhost:5000/inventories?email=${user?.email}`;
+      try {
+        const { data } = await axios.get(url, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        });
+        setInventories(data);
+      } catch (err) {
+        if(err.response.status === 401 || err.response.status === 403 ){
+           await signOut(auth);
+           navigate('/login');
+           toast('session time out, please login again');
+        }
+      }
+    };
+    getInventories();
   }, [user, updated]);
 
+  // Handle Delete
   const handleDelete = (id) => {
     const confirmation = window.confirm("Are you sure you want to delete?");
     if (confirmation) {
@@ -41,7 +61,7 @@ const MyItem = () => {
         ) : (
           ""
         )}
-        {inventories.map((inventory) => (
+        {inventories?.map((inventory) => (
           <div key={inventory._id} className="mx-auto">
             <div>
               <div className="max-w-sm rounded-lg border bg-gray-300">

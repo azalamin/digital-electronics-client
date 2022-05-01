@@ -57,31 +57,31 @@ const Home = () => {
         <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-20">
           Inventories
         </h1>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 xl:gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 xl:gap-5 bg-white">
           {inventories.map((inventory) => (
             <div key={inventory._id} className="mx-auto">
               <div>
-                <div className="max-w-sm rounded-lg border bg-gray-800">
+                <div style={{transition: '0.5s'}} className="max-w-sm rounded-lg border hover:bg-gray-100 hover:scale-95">
                   <img className="rounded-t-lg" src={inventory?.img} alt="" />
                   <div className="p-5">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    <h5 className="mb-2 text-2xl font-bold text-gray-900 ">
                       {inventory.name}
                     </h5>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    <p className="mb-3 font-normal text-gray-700 ">
                       <strong>Price:</strong> ${inventory?.price}
                     </p>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    <p className="mb-3 font-normal text-gray-700 ">
                       <strong>Quantity:</strong> {inventory?.quantity} in stock
                     </p>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    <p className="mb-3 font-normal text-gray-700 ">
                       <strong>Supplier Name:</strong> {inventory?.supplierName}
                     </p>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    <p className="mb-3 font-normal text-gray-700 ">
                       <strong>Description:</strong> {inventory?.description}
                     </p>
                     <button
                       onClick={() => navigate(`/manage/${inventory?._id}`)}
-                      className="block border-2 rounded-lg hover:bg-indigo-800 hover:border-indigo-800 px-4 transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none w-full py-2 text-xl text-white"
+                      className="block border-2 rounded-lg bg-indigo-700 hover:bg-indigo-900 px-4 transition-all duration-300 ease-in-out focus:shadow-outline focus:outline-none w-full py-2 text-xl text-white"
                     >
                       Manage
                     </button>
@@ -101,11 +101,13 @@ const Home = () => {
           </button>
         </div>
       </section>
-      <section className="py-20 container px-4 mx-auto">
-        <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-20">
-          OUR STOCKS
-        </h1>
-        <InventoryChart inventories={inventories}></InventoryChart>
+      <section className="container mx-auto">
+        <div className="bg-gray-50 py-10 px-4">
+          <h1 className="text-4xl sm:text-5xl text-center font-bold font-mono mb-20">
+            OUR <span className="text-indigo-700">STOCKS</span>
+          </h1>
+          <InventoryChart inventories={inventories}></InventoryChart>
+        </div>
         <div>
           <Faq></Faq>
         </div>

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { AiOutlineLogin } from "react-icons/ai";
@@ -20,16 +21,18 @@ const Login = () => {
 
   //  Handle Logged user Redirect
   if (user) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
 
   // Handle Login
-  const handleLogin = (event) => {
+  const handleLogin = async(event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log(email, password);
     signInWithEmailAndPassword(email, password);
+    const { data } = await axios.post(`http://localhost:5000/login`, {email});
+    localStorage.setItem('accessToken', data?.accessToken);
+    navigate(from, { replace: true });
   };
 
   return (

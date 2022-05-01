@@ -1,18 +1,18 @@
 import React from 'react';
 import {
-    Bar,
-    BarChart,
-    CartesianGrid,
-    Legend,
-    ResponsiveContainer,
-    Tooltip,
-    XAxis,
-    YAxis
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis
 } from "recharts";
 
 const InventoryChart = ({ inventories }) => {
   return (
-    <div>
+    <div className=''>
       <ResponsiveContainer className="chart-container" height={450}>
         <BarChart
           data={inventories}

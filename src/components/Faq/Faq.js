@@ -70,7 +70,6 @@ const Faq = () => {
                 <summary className="font-semibold cursor-pointer   bg-gray-200 rounded-md py-2 px-4">
                   How long does transloading take?
                 </summary>
-
                 <span className="px-4 py-2">
                   Transloading can take anywhere from 30 minutes to 5 hours
                   depending on how the product is received, and the services

@@ -1,5 +1,7 @@
+import axios from "axios";
 import React from "react";
 import {
+  useAuthState,
   useSignInWithGithub,
   useSignInWithGoogle
 } from "react-firebase-hooks/auth";
@@ -14,6 +16,7 @@ const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signInWithGithub, githubUser, githubLoading, githubError] =
     useSignInWithGithub(auth);
+  const [currentUser] = useAuthState(auth);
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
@@ -22,10 +25,17 @@ const SocialLogin = () => {
     return <Loading />;
   }
 
-  // Logged USER Redirect
-  if (user || githubUser) {
-    navigate(from, { replace: true });
-  }
+  const socialSignIn = async () => {
+    const email = currentUser?.email;
+    // Logged USER Redirect
+    if (user || githubUser) {
+      const data = await axios.post(`http://localhost:5000/login`, { email });
+      localStorage.setItem("accessToken", data?.data?.accessToken);
+      navigate(from, { replace: true });
+    }
+  };
+  socialSignIn();
+
   return (
     <div className="flex flex-col items-center">
       {/* Handle Sign In With Google */}

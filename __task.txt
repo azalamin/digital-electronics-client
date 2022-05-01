@@ -21,11 +21,11 @@ ______Bonus________
 4. Done
 5. Done
 6. Done
-7. Half Done
+7. Done
 8. Done
 9. Done
 10. Not -2
-11. Not -3
+11. Done
 
 ______Optional but highly encourage________
 1. Not
