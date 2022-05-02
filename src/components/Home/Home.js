@@ -11,7 +11,7 @@ const Home = () => {
   // handle load 6 inventory for home page
   useEffect(() => {
     fetch(
-      `http://localhost:5000/inventory?homeInventory=${6}`
+      `https://gentle-forest-27410.herokuapp.com/inventory?homeInventory=${6}`
     )
       .then((res) => res.json())
       .then((data) => setInventories(data));

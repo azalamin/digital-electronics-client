@@ -29,7 +29,7 @@ const SocialLogin = () => {
     const email = currentUser?.email;
     // Logged USER Redirect
     if (user || githubUser) {
-      const data = await axios.post(`http://localhost:5000/login`, { email });
+      const data = await axios.post(`https://gentle-forest-27410.herokuapp.com/login`, { email });
       localStorage.setItem("accessToken", data?.data?.accessToken);
       navigate(from, { replace: true });
     }

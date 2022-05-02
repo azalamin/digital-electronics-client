@@ -9,7 +9,7 @@ const InventoryDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/inventoryDetails?manageId=${manageId}`)
+    fetch(`https://gentle-forest-27410.herokuapp.com/inventoryDetails?manageId=${manageId}`)
       .then((res) => res.json())
       .then((data) => setInventory(data));
   }, [manageId, updated]);
@@ -20,7 +20,7 @@ const InventoryDetails = () => {
       quantity = quantity - 1;
     }
 
-    fetch(`http://localhost:5000/updateQuantity?manageId=${manageId}`, {
+    fetch(`https://gentle-forest-27410.herokuapp.com/updateQuantity?manageId=${manageId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -42,7 +42,7 @@ const InventoryDetails = () => {
     event.preventDefault();
     const userQuantity = event.target.number.value;
     const quantity = parseInt(inventory?.quantity) + parseInt(userQuantity);
-    fetch(`http://localhost:5000/updateQuantity?manageId=${manageId}`, {
+    fetch(`https://gentle-forest-27410.herokuapp.com/updateQuantity?manageId=${manageId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
