@@ -23,10 +23,10 @@ const MyItem = () => {
         });
         setInventories(data);
       } catch (err) {
-        if(err.response.status === 401 || err.response.status === 403 ){
-           await signOut(auth);
-           navigate('/login');
-           toast('session time out, please login again');
+        if (err.response.status === 401 || err.response.status === 403) {
+          await signOut(auth);
+          navigate("/login");
+          toast("session time out, please login again");
         }
       }
     };
