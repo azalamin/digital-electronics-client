@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import DETeam from "../DETeam/DETeam";
 import Faq from "../Faq/Faq";
 import InventoryChart from "../InventoryChart/InventoryChart";
 import Loading from "../Loading/Loading";
@@ -116,6 +117,10 @@ const Home = () => {
             OUR <span className="text-indigo-700">STOCKS</span>
           </h1>
           <InventoryChart inventories={inventories}></InventoryChart>
+        </div>
+        {/* DE Team Group */}
+        <div>
+          <DETeam></DETeam>
         </div>
         <div>
           <Faq></Faq>
