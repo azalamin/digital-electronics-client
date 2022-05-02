@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Faq from "../Faq/Faq";
 import InventoryChart from "../InventoryChart/InventoryChart";
+import Loading from "../Loading/Loading";
 import "./Home.css";
 
 const Home = () => {
@@ -16,6 +17,11 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setInventories(data));
   }, []);
+
+  // Spinner
+  if (inventories.length <= 0) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -61,7 +67,10 @@ const Home = () => {
           {inventories.map((inventory) => (
             <div key={inventory._id} className="mx-auto">
               <div>
-                <div style={{transition: '0.5s'}} className="max-w-sm rounded-lg border hover:bg-gray-100 hover:scale-95">
+                <div
+                  style={{ transition: "0.5s" }}
+                  className="max-w-sm rounded-lg border hover:bg-gray-100 hover:scale-95"
+                >
                   <img className="rounded-t-lg" src={inventory?.img} alt="" />
                   <div className="p-5">
                     <h5 className="mb-2 text-2xl font-bold text-gray-900 ">

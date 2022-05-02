@@ -4,6 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Loading from "../Loading/Loading";
 
 const MangeInventories = () => {
   const navigate = useNavigate();
@@ -15,11 +16,16 @@ const MangeInventories = () => {
       .then((res) => res.json())
       .then((data) => setInventories(data));
   }, [updated]);
+  
+  // Spinner
+  if (inventories.length <= 0) {
+    return <Loading />;
+  }
 
   // Handle Delete Inventory
   const handleDelete = (id) => {
     // handle delete confirmation
-    const confirmation = window.confirm('Are you sure you want to delete?');
+    const confirmation = window.confirm("Are you sure you want to delete?");
     if (confirmation) {
       axios
         .delete(

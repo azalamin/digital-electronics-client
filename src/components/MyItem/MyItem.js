@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import Loading from "../Loading/Loading";
 
 const MyItem = () => {
   const [inventories, setInventories] = useState([]);
@@ -50,6 +51,11 @@ const MyItem = () => {
         });
     }
   };
+
+  // Sinner
+  if (inventories.length <= 0) {
+    return <Loading />;
+  }
 
   return (
     <div className="container px-4 mx-auto mt-20 py-10">
