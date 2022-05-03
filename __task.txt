@@ -30,14 +30,14 @@ ______Bonus________
 ______Optional but highly encourage________
 1. Done
 2. Not
-3. Not
+3. Done
 
 ______Optional________
 1. Done
 2. Done
 3. Done
 4. Done
-5. Not - finding
+5. Done
 6. No need to do it
 7. Done
 8. Done

@@ -1,22 +1,36 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
+import { BsCheckCircleFill } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loading from "../Loading/Loading";
+import "./MangeInventories.css";
 
 const MangeInventories = () => {
   const navigate = useNavigate();
   const [inventories, setInventories] = useState([]);
   const [updated, setUpdated] = useState({});
+  const [pageCount, setPageCount] = useState(0);
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(10);
 
   useEffect(() => {
-    fetch(`https://gentle-forest-27410.herokuapp.com/inventory`)
+    fetch(`https://gentle-forest-27410.herokuapp.com/inventory?page=${page}&size=${size}`)
       .then((res) => res.json())
       .then((data) => setInventories(data));
-  }, [updated]);
-  
+  }, [updated, page, size]);
+
+  useEffect(() => {
+    fetch("https://gentle-forest-27410.herokuapp.com/inventoryCount")
+      .then((res) => res.json())
+      .then((data) => {
+        const pages = Math.ceil(data?.totalInventory / 10);
+        setPageCount(pages);
+      });
+  }, []);
+
   // Spinner
   if (inventories.length <= 0) {
     return <Loading />;
@@ -28,9 +42,7 @@ const MangeInventories = () => {
     const confirmation = window.confirm("Are you sure you want to delete?");
     if (confirmation) {
       axios
-        .delete(
-          `https://gentle-forest-27410.herokuapp.com/inventory?inventoryId=${id}`
-        )
+        .delete(`https://gentle-forest-27410.herokuapp.com/inventory?inventoryId=${id}`)
         .then((res) => {
           toast("Item deleted");
           setUpdated(res);
@@ -84,18 +96,25 @@ const MangeInventories = () => {
                   <tbody key={inventory?._id}>
                     <tr className="border-b">
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r">
-                        {index + 1}
+                        <BsCheckCircleFill className="text-2xl mx-auto text-green-500" />
                       </td>
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
-                        {inventory?.name}
+                      <td className="text-sm text-gray-900 font-semibold px-6 py-4 whitespace-nowrap border-r">
+                        <div className="flex flex-col justify-center items-center">
+                          <p>
+                            <strong>{inventory?.name}</strong>
+                          </p>
+                          <p>
+                            <img className="w-20" src={inventory?.img} alt="" />
+                          </p>
+                        </div>
                       </td>
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                      <td className="text-sm text-gray-900 font-semibold px-6 py-4 whitespace-nowrap border-r">
                         {inventory?.quantity}
                       </td>
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                      <td className="text-sm text-gray-900 font-semibold px-6 py-4 whitespace-nowrap border-r">
                         ${inventory?.price}
                       </td>
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r flex justify-center">
+                      <td className="text-sm text-gray-900 font-semibold px-6 py-4 whitespace-nowrap border-r flex justify-center">
                         {/* Handle Inventory Delete BUTTON */}
                         <p
                           onClick={() => handleDelete(inventory?._id)}
@@ -108,6 +127,32 @@ const MangeInventories = () => {
                   </tbody>
                 ))}
               </table>
+              <div className="pagination py-10">
+                {[...Array(pageCount).keys()].map((number) => (
+                  <button
+                    className={
+                      number === page ? "active-button" : "inactive-button"
+                    }
+                    onClick={() => setPage(number)}
+                    key={number}
+                  >
+                    {number + 1}
+                  </button>
+                ))}
+                <select
+                  className="rounded-lg"
+                  name=""
+                  id=""
+                  onChange={(e) => setSize(e.target.value)}
+                >
+                  <option value="5">5</option>
+                  <option selected value="10">
+                    10
+                  </option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>

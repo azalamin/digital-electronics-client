@@ -1,0 +1,11 @@
+.pagination button {
+  padding: 5px 10px;
+  border: 1px solid indigo;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.pagination .active-button {
+  background-color: #41379c;
+  color: white;
+}

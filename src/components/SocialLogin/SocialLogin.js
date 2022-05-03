@@ -1,9 +1,9 @@
 import axios from "axios";
 import React from "react";
 import {
-  useAuthState,
-  useSignInWithGithub,
-  useSignInWithGoogle
+    useAuthState,
+    useSignInWithGithub,
+    useSignInWithGoogle
 } from "react-firebase-hooks/auth";
 import { BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";

@@ -1,66 +1,68 @@
 [
   {
-    "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
+    "img": "https://i.ibb.co/2tj0KKY/laptop.png",
     "name": "Laptop",
-    "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
-    "supplierName": "Lenovo",
+    "description": "ASUS takes its name from Pegasus, the winged horse in Greek mythology that symbolises wisdom and knowledge.",
+    "supplierName": "ASUS",
     "price": 1400,
-    "quantity": 20
+    "quantity": 25
   },
   {
-    "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
-    "name": "Laptop",
-    "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
-    "supplierName": "Lenovo",
-    "price": 1400,
-    "quantity": 20
+    "img": "https://i.ibb.co/KXhZC0t/phone.png",
+    "name": "Smart Phone",
+    "description": "Samsung, South Korean company that is one of the world's largest producers of electronic devices.",
+    "supplierName": "SAMSUNG",
+    "price": 1300,
+    "quantity": 29
   },
   {
-    "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
-    "name": "Laptop",
-    "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
-    "supplierName": "Lenovo",
-    "price": 1400,
-    "quantity": 20
+    "img": "https://i.ibb.co/7KyxvpB/camera.png",
+    "name": "DSLR Camera",
+    "description": "Canon EOS (Electro-Optical System) is an autofocus single-lens reflex camera",
+    "supplierName": "CANON",
+    "price": 1100,
+    "quantity": 23
   },
   {
-    "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
-    "name": "Laptop",
-    "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
-    "supplierName": "Lenovo",
-    "price": 1400,
-    "quantity": 20
+    "img": "https://i.ibb.co/1L5rG1B/airconditon.png",
+    "name": "Air Conditioner",
+    "description": "In this mode, the indoor blower in a Blue Star AC runs for a few minutes even after the airconditioner is switched off.",
+    "supplierName": "Blue Star Ac",
+    "price": 1200,
+    "quantity": 27
   },
   {
-    "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
-    "name": "Laptop",
-    "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
-    "supplierName": "Lenovo",
-    "price": 1400,
-    "quantity": 20
+    "img": "https://i.ibb.co/Lr98pfp/refrigerator.png",
+    "name": "Refrigerator",
+    "description": "Electrolux AB (Swedish: [ɛˈlɛ̂kːtrʊˌlɵks, ɛlɛktrʊˈlɵks]) is a Swedish multinational home appliance manufacturer.",
+    "supplierName": "Electrolux",
+    "price": 800,
+    "quantity": 25
   },
   {
-    "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
-    "name": "Laptop",
-    "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
-    "supplierName": "Lenovo",
-    "price": 1400,
-    "quantity": 20
+    "img": "https://i.ibb.co/CbZcYBy/tv.png",
+    "name": "Television",
+    "description": "A smart TV is a digital television that is, essentially, an Internet-connected, storage-aware computer.",
+    "supplierName": "Samsung TV",
+    "price": 3800,
+    "quantity": 88
   },
   {
-    "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
-    "name": "Laptop",
-    "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
-    "supplierName": "Lenovo",
-    "price": 1400,
-    "quantity": 20
+    "email": "azalamins@gmail.com",
+    "name": "Multi Plug",
+    "price": "500",
+    "quantity": 30,
+    "supplierName": "Wipro 4 way multiplu",
+    "description": "multiplug (plural multiplugs) An electric device that allows more than one plug to connect to a single socket by containing multiple similar sockets",
+    "img": "https://i.ibb.co/1KDdSBH/plug.png"
   },
   {
-    "img": "https://i.ibb.co/nCsj3Yh/repair1.png",
+    "email": "azalamins@gmail.com",
     "name": "Laptop",
-    "description": "Laptop are often more important for daily uses, it's helps us in daily task.",
-    "supplierName": "Lenovo",
-    "price": 1400,
-    "quantity": 20
+    "price": "1400",
+    "quantity": "25",
+    "supplierName": "Asus",
+    "img": "https://i.ibb.co/2tj0KKY/laptop.png",
+    "description": "ASUS takes its name from Pegasus, the winged horse in Greek mythology that symbolises wisdom and knowledge.\n\n"
   }
 ]
